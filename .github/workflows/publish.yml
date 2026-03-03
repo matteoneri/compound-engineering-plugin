@@ -39,7 +39,6 @@ jobs:
         with:
           # npm trusted publishing requires Node 22.14.0+.
           node-version: "24"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Release
         env:
