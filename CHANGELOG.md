@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Release numbering now follows the repository `v*` tag line. Starting at `v2.34.0`, the root CLI package and this changelog stay on that shared version stream. Older entries below retain the previous `0.x` CLI numbering.
 
+# [2.36.0](https://github.com/EveryInc/compound-engineering-plugin/compare/v2.35.0...v2.36.0) (2026-03-11)
+
+
+### Bug Fixes
+
+* **hooks:** wrap PreToolUse handlers in try-catch to prevent parallel tool call crashes ([598222e](https://github.com/EveryInc/compound-engineering-plugin/commit/598222e11cb2206a2e3347cb5dd38cacdc3830df)), closes [#85](https://github.com/EveryInc/compound-engineering-plugin/issues/85)
+* **install:** merge config instead of overwriting on opencode target ([1db7680](https://github.com/EveryInc/compound-engineering-plugin/commit/1db76800f91fefcc1bb9c1798ef273ddd0b65f5c)), closes [#125](https://github.com/EveryInc/compound-engineering-plugin/issues/125)
+* **review:** add serial mode to prevent context limit crashes ([d96671b](https://github.com/EveryInc/compound-engineering-plugin/commit/d96671b9e9ecbe417568b2ce7f7fa4d379c2bec2)), closes [#166](https://github.com/EveryInc/compound-engineering-plugin/issues/166)
+
+
+### Features
+
+* **compound:** add context budget precheck and compact-safe mode ([c4b1358](https://github.com/EveryInc/compound-engineering-plugin/commit/c4b13584312058cb8db3ad0f25674805bbb91b2d)), closes [#198](https://github.com/EveryInc/compound-engineering-plugin/issues/198)
+* **plan:** add daily sequence number to plan filenames ([e94ca04](https://github.com/EveryInc/compound-engineering-plugin/commit/e94ca0409671efcfa2d4a8fcb2d60b79a848fd85)), closes [#135](https://github.com/EveryInc/compound-engineering-plugin/issues/135)
+* **plugin:** release v2.39.0 with community contributions ([d2ab6c0](https://github.com/EveryInc/compound-engineering-plugin/commit/d2ab6c076882a4dacaa787c0a6f3c9d555d38af0))
+
 # [2.35.0](https://github.com/EveryInc/compound-engineering-plugin/compare/v2.34.7...v2.35.0) (2026-03-10)
 
 
