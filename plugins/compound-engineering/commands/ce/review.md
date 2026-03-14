@@ -57,6 +57,8 @@ The following paths are compound-engineering pipeline artifacts and must never b
 - `docs/solutions/*.md` — Solution documents created during the pipeline.
 
 If a review agent flags any file in these directories for cleanup or removal, discard that finding during synthesis. Do not create a todo for it.
+
+**Exception:** The staleness-detector agent may report that docs in these directories are outdated. These are advisory findings ("documentation may need updating"), not recommendations for deletion. Include staleness advisories in the review synthesis as a separate informational section.
 </protected_artifacts>
 
 #### Load Review Agents
@@ -78,6 +80,7 @@ Task {agent-name}(PR content + review context from settings body)
 Additionally, always run these regardless of settings:
 - Task agent-native-reviewer(PR content) - Verify new features are agent-accessible
 - Task learnings-researcher(PR content) - Search docs/solutions/ for past issues related to this PR's modules and patterns
+- Task staleness-detector(docs/solutions/) - Check for stale solution docs (advisory, P3 — never blocks merge)
 
 </parallel_tasks>
 
@@ -220,7 +223,8 @@ Remove duplicates, prioritize by severity and impact.
 
 - [ ] Collect findings from all parallel agents
 - [ ] Surface learnings-researcher results: if past solutions are relevant, flag them as "Known Pattern" with links to docs/solutions/ files
-- [ ] Discard any findings that recommend deleting or gitignoring files in `docs/plans/` or `docs/solutions/` (see Protected Artifacts above)
+- [ ] Surface staleness-detector results: if stale docs were found, include them in a dedicated "Documentation Staleness (Advisory)" section — do NOT create todos for these, just report them with a note to run `/ce:prune`
+- [ ] Discard any findings that recommend deleting or gitignoring files in `docs/plans/` or `docs/solutions/` (see Protected Artifacts above), except staleness-detector advisories which use the dedicated section
 - [ ] Categorize by type: security, performance, architecture, quality, etc.
 - [ ] Assign severity levels: 🔴 CRITICAL (P1), 🟡 IMPORTANT (P2), 🔵 NICE-TO-HAVE (P3)
 - [ ] Remove duplicate or overlapping findings
@@ -379,6 +383,16 @@ After creating all todo files, present comprehensive summary:
 
 - `005-pending-p3-{finding}.md` - {description}
 
+### Documentation Staleness (Advisory)
+
+[If staleness-detector found stale entries:]
+- X stale entries detected in docs/solutions/
+- Run `/ce:prune` to review and triage
+- [list stale doc paths with brief reason, e.g., "docs/solutions/performance-issues/n-plus-one.md — 12 commits to referenced files"]
+
+[If staleness-detector found nothing or docs/solutions/ missing:]
+[Omit this section entirely]
+
 ### Review Agents Used:
 
 - kieran-rails-reviewer
@@ -386,6 +400,7 @@ After creating all todo files, present comprehensive summary:
 - performance-oracle
 - architecture-strategist
 - agent-native-reviewer
+- staleness-detector (advisory)
 - [other agents]
 
 ### Next Steps:

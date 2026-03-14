@@ -6,8 +6,8 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 
 | Component | Count |
 |-----------|-------|
-| Agents | 29 |
-| Commands | 22 |
+| Agents | 30 |
+| Commands | 23 |
 | Skills | 20 |
 | MCP Servers | 1 |
 
@@ -53,7 +53,7 @@ Agents are organized into categories for easier discovery.
 | `design-iterator` | Iteratively refine UI through systematic design iterations |
 | `figma-design-sync` | Synchronize web implementations with Figma designs |
 
-### Workflow (5)
+### Workflow (6)
 
 | Agent | Description |
 |-------|-------------|
@@ -62,6 +62,7 @@ Agents are organized into categories for easier discovery.
 | `lint` | Run linting and code quality checks on Ruby and ERB files |
 | `pr-comment-resolver` | Address PR comments and implement fixes |
 | `spec-flow-analyzer` | Analyze user flows and identify gaps in specifications |
+| `staleness-detector` | Detect stale docs/solutions/ entries by checking git history of referenced files |
 
 ### Docs (1)
 
@@ -82,6 +83,7 @@ Core workflow commands use `ce:` prefix to unambiguously identify them as compou
 | `/ce:review` | Run comprehensive code reviews |
 | `/ce:work` | Execute work items systematically |
 | `/ce:compound` | Document solved problems to compound team knowledge |
+| `/ce:prune` | Detect and triage stale docs/solutions/ entries |
 
 > **Deprecated aliases:** `/workflows:plan`, `/workflows:work`, `/workflows:review`, `/workflows:brainstorm`, `/workflows:compound` still work but show a deprecation warning. Use `ce:*` equivalents.
 

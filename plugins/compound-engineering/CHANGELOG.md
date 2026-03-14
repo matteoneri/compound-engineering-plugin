@@ -5,6 +5,16 @@ All notable changes to the compound-engineering plugin will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.39.0] - 2026-03-14
+
+### Added
+
+- **`staleness-detector` agent** — Scans `docs/solutions/` for stale entries by extracting file references from each doc and checking git history for changes since the doc was written. Reports stale entries with specific changed files, commit counts, and rename detection. Uses `model: haiku` for cost efficiency.
+- **`/ce:prune` command** — Interactive triage for stale `docs/solutions/` entries. Six-phase workflow: prerequisites check → staleness scan → report summary → interactive triage (Keep/Update/Archive/Delete) → batch operations for 10+ entries → summary with critical patterns check. Archived docs go to `docs/solutions/.archived/` and are excluded from `learnings-researcher` searches.
+- **`staleness-detector` wired into `/ce:review`** — Runs as an always-on advisory agent (P3, never blocks merge). Results appear in a dedicated "Documentation Staleness (Advisory)" section in the review summary with a note to run `/ce:prune`. Protected Artifacts rule updated to exempt staleness advisories from the discard filter.
+
+---
+
 ## [2.38.1] - 2026-03-01
 
 ### Fixed
